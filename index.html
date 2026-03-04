@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lenci Studio — Pitch Deck</title>
+  <title>LENCI — Pitch Deck</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,17 +11,21 @@
   <style>
     :root {
       --brand-violet: #8b5cf6;
+      --brand-violet-dark: #7c3aed;
       --brand-purple: #a78bfa;
       --brand-blue: #3b82f6;
-      --brand-cyan: #06b6d4;
+      --brand-cyan: #22d3ee;
       --brand-emerald: #10b981;
       --brand-pink: #ec4899;
       --brand-amber: #f59e0b;
-      --bg-dark: #0a0a0f;
-      --bg-card: rgba(255,255,255,0.04);
-      --text-primary: #f1f5f9;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
+      --brand-orange: #f97316;
+      --bg-dark: #09090b;
+      --bg-card: rgba(24,24,27,0.6);
+      --bg-elevated: #18181b;
+      --text-primary: #fafafa;
+      --text-secondary: #d4d4d8;
+      --text-muted: #a1a1aa;
+      --border: rgba(255,255,255,0.1);
     }
 
     .reveal {
@@ -32,7 +36,7 @@
     .reveal .slides { text-align: left; }
 
     .reveal .slides section {
-      padding: 20px 44px;
+      padding: 18px 40px;
       height: 100%;
       box-sizing: border-box;
       overflow: hidden;
@@ -46,45 +50,52 @@
       color: var(--text-primary);
     }
 
-    .reveal h1 { font-size: 2.2em; line-height: 1.05; }
-    .reveal h2 { font-size: 1.5em; line-height: 1.1; margin-bottom: 0.15em; }
-    .reveal h3 { font-size: 1em; font-weight: 600; color: var(--brand-purple); margin-bottom: 0.2em; }
+    .reveal h1 { font-size: 2.4em; line-height: 1.05; }
+    .reveal h2 { font-size: 1.4em; line-height: 1.1; margin-bottom: 0.15em; }
+    .reveal h3 { font-size: 0.92em; font-weight: 600; color: var(--brand-purple); margin-bottom: 0.2em; }
 
     .reveal p, .reveal li {
-      font-size: 0.75em;
-      line-height: 1.5;
+      font-size: 0.72em;
+      line-height: 1.45;
       color: var(--text-secondary);
       font-weight: 400;
     }
 
     .reveal ul { list-style: none; padding: 0; margin: 0; }
     .reveal ul li {
-      padding: 0.12em 0 0.12em 1.5em;
+      padding: 0.1em 0 0.1em 1.4em;
       position: relative;
     }
     .reveal ul li::before {
       content: '';
       position: absolute;
       left: 0;
-      top: 0.6em;
-      width: 6px;
-      height: 6px;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--brand-violet);
     }
 
     .reveal .slide-number {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-muted);
       background: transparent;
-      right: 30px;
-      bottom: 20px;
+      right: 28px;
+      bottom: 18px;
     }
 
     /* Gradient text */
     .gradient-text {
       background: linear-gradient(135deg, var(--brand-violet), var(--brand-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-hero {
+      background: linear-gradient(135deg, var(--brand-pink), #a855f7, var(--brand-blue));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -106,10 +117,10 @@
 
     /* Tagline */
     .tagline {
-      font-size: 0.92em;
+      font-size: 0.88em;
       font-weight: 300;
       color: var(--text-secondary);
-      margin-top: 0.4em;
+      margin-top: 0.3em;
       line-height: 1.35;
     }
 
@@ -117,214 +128,245 @@
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 1em;
+      gap: 12px;
+      margin-top: 0.6em;
     }
 
     .stat-card {
-      background: rgba(255,255,255,0.03);
+      background: var(--bg-card);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(139, 92, 246, 0.15);
-      border-radius: 12px;
-      padding: 12px 12px;
+      border-radius: 10px;
+      padding: 10px;
       text-align: center;
       transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .stat-card:hover {
       border-color: rgba(139, 92, 246, 0.5);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(139, 92, 246, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(139, 92, 246, 0.12);
     }
 
     .stat-number {
-      font-size: 1.8em;
+      font-size: 1.6em;
       font-weight: 900;
       line-height: 1;
-      margin-bottom: 0.1em;
+      margin-bottom: 0.05em;
     }
 
     .stat-label {
-      font-size: 0.72em;
+      font-size: 0.62em;
       color: var(--text-muted);
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
+    /* Glass cards */
+    .glass {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass:hover {
+      border-color: rgba(139, 92, 246, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
     /* Feature cards */
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-top: 1em;
+      gap: 10px;
+      margin-top: 0.6em;
     }
 
     .feature-card {
-      background: rgba(255,255,255,0.03);
+      background: var(--bg-card);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 12px;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .feature-card:hover {
       transform: translateY(-2px);
       border-color: rgba(139, 92, 246, 0.3);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
 
     .feature-card h4 {
-      font-size: 0.8em;
+      font-size: 0.75em;
       font-weight: 700;
-      margin: 0 0 0.3em 0;
+      margin: 0 0 0.2em 0;
       color: var(--text-primary);
     }
 
     .feature-card p {
-      font-size: 0.65em;
+      font-size: 0.6em;
       margin: 0;
-      line-height: 1.4;
+      line-height: 1.35;
     }
 
     .feature-icon {
-      font-size: 1.1em;
-      margin-bottom: 0.15em;
+      font-size: 1em;
+      margin-bottom: 0.1em;
       display: block;
     }
 
     /* Pill badges */
     .pill {
       display: inline-block;
-      padding: 3px 10px;
+      padding: 2px 9px;
       border-radius: 100px;
-      font-size: 0.62em;
+      font-size: 0.58em;
       font-weight: 600;
       letter-spacing: 0.02em;
-      margin: 2px 3px;
+      margin: 2px 2px;
       transition: all 0.3s ease;
     }
 
-    .pill:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.2);
-    }
+    .pill:hover { transform: translateY(-1px); filter: brightness(1.2); }
 
     .pill-violet { background: rgba(139,92,246,0.15); color: var(--brand-violet); border: 1px solid rgba(139,92,246,0.3); }
     .pill-blue { background: rgba(59,130,246,0.15); color: var(--brand-blue); border: 1px solid rgba(59,130,246,0.3); }
-    .pill-cyan { background: rgba(6,182,212,0.15); color: var(--brand-cyan); border: 1px solid rgba(6,182,212,0.3); }
+    .pill-cyan { background: rgba(34,211,238,0.15); color: var(--brand-cyan); border: 1px solid rgba(34,211,238,0.3); }
     .pill-emerald { background: rgba(16,185,129,0.15); color: var(--brand-emerald); border: 1px solid rgba(16,185,129,0.3); }
     .pill-pink { background: rgba(236,72,153,0.15); color: var(--brand-pink); border: 1px solid rgba(236,72,153,0.3); }
     .pill-amber { background: rgba(245,158,11,0.15); color: var(--brand-amber); border: 1px solid rgba(245,158,11,0.3); }
+    .pill-orange { background: rgba(249,115,22,0.15); color: var(--brand-orange); border: 1px solid rgba(249,115,22,0.3); }
 
     /* Two column layout */
     .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      gap: 24px;
       align-items: start;
-      margin-top: 0.8em;
-    }
-
-    .two-col-wide {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      align-items: start;
-      margin-top: 0.8em;
+      margin-top: 0.5em;
     }
 
     /* Pain points */
     .pain-item {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      padding: 8px 0;
+      gap: 10px;
+      padding: 5px 0;
       border-bottom: 1px solid rgba(255,255,255,0.04);
     }
 
-    .pain-icon {
-      font-size: 1.4em;
-      flex-shrink: 0;
-      line-height: 1;
-    }
+    .pain-icon { font-size: 1.2em; flex-shrink: 0; line-height: 1; }
 
     .pain-text h4 {
-      font-size: 0.85em;
+      font-size: 0.78em;
       font-weight: 700;
-      margin: 0 0 2px 0;
+      margin: 0 0 1px 0;
       color: var(--text-primary);
     }
 
-    .pain-text p {
-      font-size: 0.72em;
-      margin: 0;
+    .pain-text p { font-size: 0.62em; margin: 0; }
+
+    /* Compare table */
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 0.4em;
+      font-size: 0.68em;
     }
 
-    /* Tech stack */
-    .tech-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin: 4px 0;
+    .compare-table th {
+      text-align: left;
+      padding: 5px 10px;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.8em;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+
+    .compare-table td {
+      padding: 4px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text-secondary);
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .highlight { color: var(--brand-emerald); font-weight: 600; text-shadow: 0 0 20px rgba(16,185,129,0.15); }
+    .compare-table .dim { color: var(--text-muted); }
+    .compare-table tbody tr { transition: background 0.3s ease; }
+    .compare-table tbody tr:hover { background: rgba(255,255,255,0.02); }
 
     /* Timeline */
     .timeline-item {
       display: flex;
-      gap: 14px;
-      padding: 8px 0;
+      gap: 12px;
+      padding: 5px 0;
       border-left: 2px solid rgba(139,92,246,0.3);
-      padding-left: 16px;
-      margin-left: 6px;
+      padding-left: 14px;
+      margin-left: 5px;
       position: relative;
     }
 
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -6px;
-      top: 14px;
-      width: 10px;
-      height: 10px;
+      left: -5px;
+      top: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--brand-violet);
       border: 2px solid var(--bg-dark);
     }
 
-    .timeline-item.done::before { background: var(--brand-emerald); box-shadow: 0 0 8px rgba(16,185,129,0.3); }
-    .timeline-item.active::before { background: var(--brand-amber); box-shadow: 0 0 12px rgba(245,158,11,0.5); animation: pulse-glow 2s ease-in-out infinite; }
+    .timeline-item.done::before { background: var(--brand-emerald); box-shadow: 0 0 6px rgba(16,185,129,0.3); }
+    .timeline-item.active::before { background: var(--brand-amber); box-shadow: 0 0 10px rgba(245,158,11,0.5); animation: pulse-glow 2s ease-in-out infinite; }
 
     @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 12px rgba(245,158,11,0.5); }
-      50% { box-shadow: 0 0 20px rgba(245,158,11,0.8); }
+      0%, 100% { box-shadow: 0 0 10px rgba(245,158,11,0.5); }
+      50% { box-shadow: 0 0 18px rgba(245,158,11,0.8); }
     }
 
-    /* Big quote */
-    .big-quote {
-      font-size: 1.8em;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--text-secondary);
-      border-left: 4px solid var(--brand-violet);
-      padding-left: 24px;
-      margin: 1em 0;
-      line-height: 1.5;
+    /* LIVE badge */
+    .live-badge {
+      display: inline-block;
+      padding: 1px 7px;
+      border-radius: 5px;
+      font-size: 0.6em;
+      font-weight: 700;
+      background: rgba(16,185,129,0.15);
+      color: var(--brand-emerald);
+      border: 1px solid rgba(16,185,129,0.3);
+      letter-spacing: 0.08em;
+      vertical-align: middle;
+      margin-left: 5px;
+      animation: live-pulse 2s ease-in-out infinite;
     }
 
-    /* CTA */
+    @keyframes live-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* CTA box */
     .cta-box {
-      background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(6,182,212,0.06));
+      background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(34,211,238,0.06));
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(139,92,246,0.3);
-      border-radius: 20px;
-      padding: 28px;
+      border-radius: 18px;
+      padding: 24px;
       text-align: center;
-      margin-top: 0.6em;
       position: relative;
       overflow: hidden;
     }
@@ -337,296 +379,206 @@
       width: 200%;
       height: 200%;
       background: radial-gradient(circle at 30% 40%, rgba(139,92,246,0.06) 0%, transparent 50%),
-                  radial-gradient(circle at 70% 60%, rgba(6,182,212,0.04) 0%, transparent 50%);
+                  radial-gradient(circle at 70% 60%, rgba(34,211,238,0.04) 0%, transparent 50%);
       pointer-events: none;
     }
 
-    .cta-box h3 {
-      font-size: 1.4em;
-      color: var(--text-primary);
-      margin-bottom: 0.2em;
-    }
-
-    .cta-box p {
-      font-size: 0.88em;
-      color: var(--text-secondary);
-    }
-
-    /* Comparison table */
-    .compare-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin-top: 0.6em;
-      font-size: 0.78em;
-    }
-
-    .compare-table th {
-      text-align: left;
-      padding: 8px 12px;
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.82em;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .compare-table td {
-      padding: 8px 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      color: var(--text-secondary);
-    }
-
-    .compare-table tr:last-child td { border-bottom: none; }
-
-    .compare-table .highlight {
-      color: var(--brand-emerald);
-      font-weight: 600;
-      text-shadow: 0 0 20px rgba(16,185,129,0.15);
-    }
-
-    .compare-table .dim { color: var(--text-muted); }
-
-    .compare-table tr {
-      transition: background 0.3s ease;
-    }
-
-    .compare-table tbody tr:hover {
-      background: rgba(255,255,255,0.02);
-    }
-
-    /* Vertical centering helpers */
-    .v-center {
-      display: flex !important;
-      flex-direction: column;
-      justify-content: flex-start;
-      height: 100%;
-      padding-top: 16px !important;
-      padding-bottom: 8px !important;
-    }
-
-    /* Subtle bg pattern */
-    .reveal .slides {
-      background-image:
-        radial-gradient(ellipse at 15% 50%, rgba(139,92,246,0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 85% 20%, rgba(6,182,212,0.04) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 90%, rgba(236,72,153,0.02) 0%, transparent 40%);
-    }
-
-    /* Logo placeholder */
-    .logo-mark {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 1.2em;
-    }
-
-    .logo-mark .mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--brand-violet), var(--brand-blue));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 1.4em;
-      color: white;
-      box-shadow: 0 4px 20px rgba(139,92,246,0.3);
-    }
-
-    .logo-mark .name {
-      font-size: 1.3em;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    /* Audience cards */
-    .audience-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 1em;
-    }
-
-    .audience-card {
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .audience-card:hover {
-      border-color: rgba(139, 92, 246, 0.25);
-      transform: translateY(-1px);
-    }
-
-    .audience-card h4 {
-      font-size: 0.8em;
-      font-weight: 700;
-      margin: 0 0 3px 0;
-      color: var(--text-primary);
-    }
-
-    .audience-card p {
-      font-size: 0.68em;
-      margin: 0;
-      line-height: 1.4;
-    }
-
-    /* Studio section header */
-    .studio-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 0.6em;
-    }
-
-    .studio-header .icon {
-      font-size: 1.4em;
-    }
-
-    /* Override reveal defaults */
-    .reveal section img {
-      border: none;
-      box-shadow: none;
-      background: none;
-    }
-
-    .reveal .progress { color: var(--brand-violet); height: 3px; box-shadow: 0 0 10px rgba(139,92,246,0.4); }
-    .reveal .controls { color: var(--brand-violet); }
-
-    /* Footer bar */
-    .slide-footer {
-      position: absolute;
-      bottom: 12px;
-      left: 48px;
-      font-size: 0.55em;
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* Three column */
-    .three-col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 1em;
-    }
-
-    .three-col .feature-card { padding: 14px; }
-
-    /* Architecture diagram placeholder */
+    /* Architecture box */
     .arch-box {
-      background: rgba(255,255,255,0.03);
+      background: var(--bg-card);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(139,92,246,0.2);
-      border-radius: 12px;
-      padding: 10px;
+      border-radius: 10px;
+      padding: 8px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.52em;
+      font-size: 0.48em;
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: 1.45;
       white-space: pre;
     }
 
-    /* Pricing tier */
+    /* Tier cards */
     .tier-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 1em;
+      gap: 12px;
+      margin-top: 0.6em;
     }
 
     .tier-card {
-      background: rgba(255,255,255,0.03);
+      background: var(--bg-card);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
       text-align: center;
       transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .tier-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: rgba(139,92,246,0.3);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
 
     .tier-card.featured {
       border-color: rgba(139,92,246,0.4);
       background: rgba(139,92,246,0.06);
-      box-shadow: 0 0 30px rgba(139,92,246,0.08);
-    }
-
-    .tier-card.featured:hover {
-      box-shadow: 0 8px 40px rgba(139,92,246,0.18);
+      box-shadow: 0 0 24px rgba(139,92,246,0.08);
     }
 
     .tier-card h4 {
-      font-size: 0.82em;
+      font-size: 0.78em;
       margin: 0 0 1px 0;
       font-weight: 700;
       color: var(--text-primary);
     }
 
     .tier-price {
-      font-size: 1.3em;
+      font-size: 1.2em;
       font-weight: 900;
       margin: 2px 0;
     }
 
-    .tier-card ul { margin-top: 4px; }
-    .tier-card li {
-      font-size: 0.6em;
-      padding: 1px 0 1px 1.2em;
-    }
-    .tier-card li::before { width: 5px; height: 5px; top: 0.55em; }
+    .tier-card ul { margin-top: 3px; }
+    .tier-card li { font-size: 0.55em; padding: 1px 0 1px 1.2em; }
+    .tier-card li::before { width: 4px; height: 4px; top: 0.55em; }
 
-    /* Small text helper */
-    .small { font-size: 0.75em; color: var(--text-muted); }
-    .mono { font-family: 'JetBrains Mono', monospace; }
-
-    /* Live badge */
-    .live-badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-size: 0.55em;
-      font-weight: 700;
-      background: rgba(16,185,129,0.15);
-      color: var(--brand-emerald);
-      border: 1px solid rgba(16,185,129,0.3);
-      letter-spacing: 0.08em;
-      vertical-align: middle;
-      margin-left: 6px;
-      animation: live-pulse 2s ease-in-out infinite;
+    /* Advantage grid */
+    .adv-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 0.4em;
     }
 
-    @keyframes live-pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
-
-    /* Glassmorphism for inline boxes */
-    .glass-card {
-      background: rgba(255,255,255,0.03);
+    .adv-card {
+      background: var(--bg-card);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 10px;
       transition: all 0.3s ease;
     }
 
-    .glass-card:hover {
-      border-color: rgba(139, 92, 246, 0.25);
+    .adv-card:hover {
+      border-color: rgba(139,92,246,0.3);
+      transform: translateY(-1px);
+    }
+
+    .adv-card h4 {
+      font-size: 0.7em;
+      font-weight: 700;
+      margin: 0 0 2px 0;
+      color: var(--text-primary);
+    }
+
+    .adv-card p {
+      font-size: 0.55em;
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    /* Studio header */
+    .studio-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.4em;
+    }
+
+    .studio-header .icon { font-size: 1.3em; }
+
+    /* Vertical layout */
+    .v-center {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+      padding-top: 14px !important;
+      padding-bottom: 6px !important;
+    }
+
+    /* Logo */
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.8em;
+    }
+
+    .logo-mark .mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--brand-violet), var(--brand-violet-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.3em;
+      color: white;
+      box-shadow: 0 4px 20px rgba(139,92,246,0.4);
+    }
+
+    .logo-mark .name {
+      font-size: 1.2em;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* Blockquote */
+    .deck-quote {
+      font-size: 0.68em;
+      font-style: italic;
+      color: var(--text-muted);
+      border-left: 3px solid var(--brand-violet);
+      padding-left: 12px;
+      margin: 0.5em 0 0;
+      line-height: 1.4;
+    }
+
+    /* Overrides */
+    .reveal section img { border: none; box-shadow: none; background: none; }
+    .reveal .progress { color: var(--brand-violet); height: 3px; box-shadow: 0 0 8px rgba(139,92,246,0.4); }
+    .reveal .controls { color: var(--brand-violet); }
+
+    .slide-footer {
+      position: absolute;
+      bottom: 10px;
+      left: 44px;
+      font-size: 0.5em;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Background */
+    .reveal .slides {
+      background-image:
+        radial-gradient(ellipse at 15% 50%, rgba(139,92,246,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 20%, rgba(34,211,238,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(236,72,153,0.02) 0%, transparent 40%);
+    }
+
+    .small { font-size: 0.68em; color: var(--text-muted); }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Three col */
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 0.5em;
+    }
+
+    /* Six grid for studios */
+    .six-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 0.6em;
     }
   </style>
 </head>
@@ -634,412 +586,477 @@
   <div class="reveal">
     <div class="slides">
 
-      <!-- ============================================ -->
-      <!-- SLIDE 1: Title -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 1: COVER ======== -->
       <section class="v-center">
         <div class="logo-mark">
           <div class="mark">L</div>
-          <span class="name">Lenci Studio</span>
+          <span class="name">LENCI</span>
         </div>
-        <h1 style="margin-bottom: 0.1em;">The End of the<br><span class="gradient-text">Photoshoot</span></h1>
-        <p class="tagline">AI-powered virtual content studio replacing expensive photo shoots<br>with infinite, commercially-ready visuals — on demand.</p>
-        <div style="margin-top: 1.2em;">
-          <span class="pill pill-violet">AI Image Generation</span>
-          <span class="pill pill-cyan">Virtual Try-On</span>
+        <h1 style="margin-bottom: 0.1em;">The End of the<br><span class="gradient-hero">Photoshoot.</span></h1>
+        <p class="tagline">AI-Powered Virtual Content Studio — replacing expensive photo shoots<br>with infinite, commercially-ready visuals. In minutes, not weeks.</p>
+        <div style="margin-top: 1em;">
+          <span class="pill pill-violet">6 AI Studios</span>
+          <span class="pill pill-cyan">Multi-Model AI</span>
           <span class="pill pill-emerald">MENA-First</span>
-          <span class="pill pill-pink">SaaS</span>
+          <span class="pill pill-pink">Saudi Fashion Native</span>
+          <span class="pill pill-amber">SaaS</span>
         </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
-
-        <aside class="notes">
-          Open with the bold claim: photoshoots are dead. Lenci replaces them entirely with AI.
-        </aside>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 2: The Problem -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 2: THE PROBLEM ======== -->
       <section class="v-center">
-        <h2>The <span class="gradient-pink">Problem</span></h2>
-        <p style="font-size: 0.88em; color: var(--text-secondary); max-width: 700px;">
-          Traditional photoshoots are the biggest bottleneck for modern fashion and e-commerce brands.
-        </p>
+        <h2>The Photoshoot Is <span class="gradient-pink">Broken</span></h2>
+        <p style="font-size: 0.78em; max-width: 700px;">Traditional product and fashion photography is <strong>slow, expensive, and impossible to scale.</strong></p>
 
-        <div style="margin-top: 0.8em;">
-          <div class="pain-item">
-            <span class="pain-icon">&#x1f4b8;</span>
-            <div class="pain-text">
-              <h4>Prohibitively Expensive</h4>
-              <p>Models, photographers, studios, stylists, retouching. A single shoot can cost $5,000–$50,000+</p>
+        <div class="two-col" style="margin-top: 0.4em;">
+          <div>
+            <div class="pain-item">
+              <span class="pain-icon">&#x1f4b8;</span>
+              <div class="pain-text">
+                <h4>Prohibitively Expensive</h4>
+                <p>A single shoot costs 15,000–60,000 SAR (studio, photographer, models, styling, post-production)</p>
+              </div>
+            </div>
+            <div class="pain-item fragment">
+              <span class="pain-icon">&#x23f3;</span>
+              <div class="pain-text">
+                <h4>Painfully Slow</h4>
+                <p>2–6 weeks from booking to final deliverables. New collections wait while competitors ship.</p>
+              </div>
+            </div>
+            <div class="pain-item fragment">
+              <span class="pain-icon">&#x1f30d;</span>
+              <div class="pain-text">
+                <h4>Logistically Complex</h4>
+                <p>Coordinate 5–10 people, locations, permits, weather, wardrobe. One reschedule resets the clock.</p>
+              </div>
             </div>
           </div>
-          <div class="pain-item fragment">
-            <span class="pain-icon">&#x23f3;</span>
-            <div class="pain-text">
-              <h4>Painfully Slow</h4>
-              <p>Weeks from concept to final assets. New collections wait in queue while competitors ship.</p>
+          <div>
+            <div class="pain-item fragment">
+              <span class="pain-icon">&#x1f6ab;</span>
+              <div class="pain-text">
+                <h4>No Scalability</h4>
+                <p>200 SKUs × 5 angles × 3 models = 3,000 photos — months of work. Impossible to scale linearly.</p>
+              </div>
             </div>
-          </div>
-          <div class="pain-item fragment">
-            <span class="pain-icon">&#x1f30d;</span>
-            <div class="pain-text">
-              <h4>Logistically Complex</h4>
-              <p>Coordinating talent, locations, weather, and equipment. One reschedule resets the clock.</p>
+            <div class="pain-item fragment">
+              <span class="pain-icon">&#x1f1f8;&#x1f1e6;</span>
+              <div class="pain-text">
+                <h4>Saudi-Specific Gap</h4>
+                <p>Limited local studios, models, and talent. Brands outsource abroad — losing cultural authenticity.</p>
+              </div>
             </div>
-          </div>
-          <div class="pain-item fragment">
-            <span class="pain-icon">&#x1f6ab;</span>
-            <div class="pain-text">
-              <h4>No Scalability</h4>
-              <p>Need 500 SKU images across 4 colorways? That's 2,000 individual shots. Impossible to scale linearly.</p>
+            <div class="pain-item fragment" style="border-bottom: none;">
+              <span class="pain-icon">&#x1f9e3;</span>
+              <div class="pain-text">
+                <h4>Modest Fashion Gap</h4>
+                <p>Thoob, abaya, and modest fashion brands struggle to find studios that understand their aesthetic.</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+        <p class="deck-quote">E-commerce brands spend 10–30% of their product launch budget on photography alone. Most of that is wasted on logistics, not creativity.</p>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 3: Market Opportunity -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 3: MARKET OPPORTUNITY ======== -->
       <section class="v-center">
         <h2>Market <span class="gradient-emerald">Opportunity</span></h2>
 
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-number gradient-text">$8.1T</div>
-            <div class="stat-label">Global E-commerce (2026)</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number gradient-pink">$1.3B</div>
-            <div class="stat-label">AI Image Generation Market</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number gradient-emerald">73%</div>
-            <div class="stat-label">Brands Want AI Content</div>
-          </div>
-        </div>
-
-        <div class="two-col" style="margin-top: 0.8em;">
+        <div class="two-col" style="margin-top: 0.3em;">
           <div>
-            <h3>Why MENA First</h3>
-            <ul>
-              <li>Saudi Vision 2030 driving explosive e-commerce growth</li>
-              <li>MENA e-commerce projected $57B by 2026</li>
-              <li>Underserved: no localized AI content tools</li>
-              <li>Full Arabic + RTL support as a competitive moat</li>
-            </ul>
+            <h3>Saudi Arabia (Primary)</h3>
+            <div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 0.3em;">
+              <div class="stat-card">
+                <div class="stat-number gradient-text" style="font-size: 1.3em;">211B</div>
+                <div class="stat-label" style="font-size: 0.55em;">SAR E-commerce 2025</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number gradient-pink" style="font-size: 1.3em;">75B+</div>
+                <div class="stat-label" style="font-size: 0.55em;">SAR Fashion Market</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number gradient-emerald" style="font-size: 1.3em;">1.2M+</div>
+                <div class="stat-label" style="font-size: 0.55em;">SMEs Need Content</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" style="font-size: 1.3em; color: var(--brand-amber);">1.1T</div>
+                <div class="stat-label" style="font-size: 0.55em;">SAR Modest Fashion</div>
+              </div>
+            </div>
           </div>
           <div>
-            <h3>Target Segments</h3>
-            <div class="audience-grid" style="grid-template-columns: 1fr; gap: 10px; margin-top: 0.6em;">
-              <div class="audience-card">
-                <h4>E-commerce & Brand Managers</h4>
-                <p>Cut content budgets, accelerate time-to-market</p>
+            <h3>Global Opportunity</h3>
+            <div class="stats-grid" style="grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 0.3em;">
+              <div class="stat-card">
+                <div class="stat-number gradient-text" style="font-size: 1.3em;">$6.3T</div>
+                <div class="stat-label" style="font-size: 0.55em;">Global E-commerce</div>
               </div>
-              <div class="audience-card">
-                <h4>Fashion Designers</h4>
-                <p>Visualize designs before production</p>
+              <div class="stat-card">
+                <div class="stat-number gradient-pink" style="font-size: 1.3em;">$12B+</div>
+                <div class="stat-label" style="font-size: 0.55em;">AI Image Gen by 2030</div>
               </div>
-              <div class="audience-card">
-                <h4>Marketing Teams & Agencies</h4>
-                <p>Infinite on-brand content variations</p>
+              <div class="stat-card">
+                <div class="stat-number gradient-emerald" style="font-size: 1.3em;">$25B+</div>
+                <div class="stat-label" style="font-size: 0.55em;">Content Creation</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number" style="font-size: 1.3em; color: var(--brand-amber);">$3.5B+</div>
+                <div class="stat-label" style="font-size: 0.55em;">Fashion Photography</div>
               </div>
             </div>
           </div>
         </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+
+        <h3 style="margin-top: 0.5em;">Why Now?</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 0.15em;">
+          <span class="pill pill-violet">AI crossed commercial threshold</span>
+          <span class="pill pill-emerald">Vision 2030 digital push</span>
+          <span class="pill pill-cyan">Noon / Salla / Zid sellers need content daily</span>
+          <span class="pill pill-pink">Budgets squeezed globally</span>
+          <span class="pill pill-amber">MENA brands want local identity</span>
+        </div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 4: The Solution -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 4: THE SOLUTION ======== -->
       <section class="v-center">
         <h2>The <span class="gradient-text">Solution</span></h2>
-        <p style="font-size: 0.92em; max-width: 750px;">
-          Four AI-powered studios that replace your entire content pipeline — from garment upload to campaign-ready video.
+        <p style="font-size: 0.82em; max-width: 750px;">
+          <strong>6 Professional Studios. Zero Photoshoots. Unlimited Output.</strong>
         </p>
 
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 0.8em;">
+        <div class="six-grid">
           <div class="feature-card" style="border-color: rgba(139,92,246,0.2);">
-            <span class="feature-icon">&#x1f455;</span>
+            <span class="feature-icon">&#x1f3a8;</span>
             <h4>Apparel Studio</h4>
-            <p>Virtual try-on &amp; on-model imagery. AI Model Agency + AI Stylist for layering.</p>
+            <p>Fashion &amp; virtual try-on. AI models wearing your actual designs.</p>
           </div>
-          <div class="feature-card fragment" style="border-color: rgba(6,182,212,0.2);">
+          <div class="feature-card fragment" style="border-color: rgba(34,211,238,0.2);">
             <span class="feature-icon">&#x1f4e6;</span>
             <h4>Product Studio</h4>
-            <p>Dynamic scene staging with AI backgrounds, props, and material-aware rendering.</p>
-          </div>
-          <div class="feature-card fragment" style="border-color: rgba(236,72,153,0.2);">
-            <span class="feature-icon">&#x1f3a8;</span>
-            <h4>Design Studio</h4>
-            <p>WYSIWYG mockup engine with fabric blend, wrinkle conforming, and colorway generation.</p>
+            <p>Professional product photography with AI-generated scenes &amp; staging.</p>
           </div>
           <div class="feature-card fragment" style="border-color: rgba(245,158,11,0.2);">
             <span class="feature-icon">&#x1f3ac;</span>
             <h4>Video Studio</h4>
-            <p>AI-generated product &amp; model videos from still images. Multi-model AI pipeline.</p>
+            <p>Hero videos from a single image. 10-second cinematic output.</p>
+          </div>
+          <div class="feature-card fragment" style="border-color: rgba(236,72,153,0.2);">
+            <span class="feature-icon">&#x1f464;</span>
+            <h4>Models Studio</h4>
+            <p>AI Character Builder — create unlimited custom models with full control.</p>
+          </div>
+          <div class="feature-card fragment" style="border-color: rgba(16,185,129,0.2);">
+            <span class="feature-icon">&#x1f3f7;&#xFE0F;</span>
+            <h4>Brand Studio</h4>
+            <p>Upload brand assets once — every generation stays on-brand automatically.</p>
+          </div>
+          <div class="feature-card fragment" style="border-color: rgba(59,130,246,0.2);">
+            <span class="feature-icon">&#x1f4cd;</span>
+            <h4>Location Studio</h4>
+            <p>Scene Composer — build the perfect shoot location with full control.</p>
           </div>
         </div>
 
-        <div style="margin-top: 1em; display: flex; flex-wrap: wrap; gap: 6px;">
-          <span class="pill pill-violet">AI Art Director</span>
-          <span class="pill pill-cyan">AI Model Agency</span>
-          <span class="pill pill-emerald">AI Prop Assistant</span>
-          <span class="pill pill-pink">Generative Video</span>
-          <span class="pill pill-amber">Post-Production Suite</span>
-          <span class="pill pill-blue">One-Click Asset Packs</span>
+        <div style="margin-top: 0.6em; display: flex; gap: 8px; align-items: center;">
+          <div class="glass" style="flex: 1; padding: 8px 12px;">
+            <p style="font-size: 0.65em; margin: 0;">&#x1f1f8;&#x1f1e6; <strong>Full Arabic &amp; RTL</strong> — 3,206 translation keys, 100% Arabic interface</p>
+          </div>
+          <div class="glass" style="flex: 1; padding: 8px 12px;">
+            <p style="font-size: 0.65em; margin: 0;">&#x1f9e3; <strong>Saudi Fashion Native</strong> — Thoob, abaya, modest fashion in the DNA</p>
+          </div>
         </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 5: Apparel Studio Deep Dive -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 5: APPAREL STUDIO ======== -->
       <section class="v-center">
         <div class="studio-header">
-          <span class="icon">&#x1f455;</span>
+          <span class="icon">&#x1f3a8;</span>
           <h2 style="margin: 0;"><span class="gradient-text">Apparel Studio</span></h2>
         </div>
-        <p style="max-width: 650px;">From flat-lay garment to photorealistic on-model imagery in seconds.</p>
+        <p style="max-width: 650px;">Fashion Photoshoot — Without the Photoshoot. Virtual try-on in <strong>under 60 seconds</strong>.</p>
 
         <div class="feature-grid">
           <div class="feature-card">
-            <h4>Upload Your Model</h4>
-            <p>Preserve brand identity. AI maintains face &amp; body with stunning accuracy for true-to-brand virtual try-ons.</p>
+            <h4>&#x1f512; Face-Locked Identity</h4>
+            <p>Model's face stays consistent across all shots. True-to-brand virtual try-ons.</p>
           </div>
           <div class="feature-card">
-            <h4>AI Model Agency</h4>
-            <p>Choose from our diverse library or create a new exclusive model from a text prompt. Save to your private roster.</p>
+            <h4>&#x1f464; Unlimited AI Models</h4>
+            <p>Build any model in Models Studio or upload a real person's photo. Save to your private roster.</p>
           </div>
           <div class="feature-card fragment">
-            <h4>Intelligent Wardrobe</h4>
-            <p>AI auto-detects garment categories and the AI Stylist suggests correct layering order.</p>
+            <h4>&#x1f455; AI Stylist</h4>
+            <p>Auto-detects garment categories. Suggests complementary styling, accessories, and layering order.</p>
           </div>
           <div class="feature-card fragment">
-            <h4>AI Art Director</h4>
+            <h4>&#x1f3af; AI Art Director</h4>
             <p>Analyzes your garment and suggests complete photoshoot concepts — poses, lighting, backgrounds.</p>
           </div>
         </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+
+        <div style="margin-top: 0.5em; display: flex; gap: 6px; flex-wrap: wrap;">
+          <span class="pill pill-violet">~1 credit per image</span>
+          <span class="pill pill-pink">Saudi Fashion Native</span>
+          <span class="pill pill-cyan">Thoob &amp; Abaya Support</span>
+          <span class="pill pill-emerald">One-Click Asset Packs</span>
+        </div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 6: Product & Design Studios -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 6: PRODUCT STUDIO ======== -->
       <section class="v-center">
-        <div class="two-col">
-          <div>
-            <div class="studio-header">
-              <span class="icon">&#x1f4e6;</span>
-              <h3 style="margin: 0; font-size: 1.05em; color: var(--brand-cyan);">Product Studio</h3>
-            </div>
-            <ul style="margin-top: 0.6em;">
-              <li>AI background removal in one click</li>
-              <li>Interactive drag-and-drop staging canvas</li>
-              <li>AI-suggested props for scene composition</li>
-              <li>Material-aware rendering: matte, glossy, metallic, glass</li>
-              <li>E-commerce &amp; social media asset packs</li>
-            </ul>
+        <div class="studio-header">
+          <span class="icon">&#x1f4e6;</span>
+          <h2 style="margin: 0;"><span style="background: linear-gradient(135deg, var(--brand-cyan), var(--brand-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Product Studio</span></h2>
+        </div>
+        <p style="max-width: 650px;">Professional Product Photography — AI Generated. Studio-quality shots with AI scenes.</p>
+
+        <div class="feature-grid">
+          <div class="feature-card" style="border-color: rgba(34,211,238,0.2);">
+            <h4>&#x2702;&#xFE0F; Auto Background Removal</h4>
+            <p>Clean cutout in seconds. No manual masking required.</p>
           </div>
-          <div>
-            <div class="studio-header">
-              <span class="icon">&#x1f3a8;</span>
-              <h3 style="margin: 0; font-size: 1.05em; color: var(--brand-pink);">Design Studio</h3>
-            </div>
-            <ul style="margin-top: 0.6em;">
-              <li>WYSIWYG live design preview on mockups</li>
-              <li>Scale, rotate, position with real-time feedback</li>
-              <li>AI graphic designer from text prompts</li>
-              <li>Fabric blend + wrinkle conforming sliders</li>
-              <li>One-click colorway generation across all variants</li>
-            </ul>
+          <div class="feature-card" style="border-color: rgba(34,211,238,0.2);">
+            <h4>&#x1f5bc;&#xFE0F; Interactive Staging Canvas</h4>
+            <p>Position your product in AI-generated environments. Drag-and-drop composition.</p>
+          </div>
+          <div class="feature-card fragment" style="border-color: rgba(34,211,238,0.2);">
+            <h4>&#x1f9f2; AI Prop Assistant</h4>
+            <p>Suggests contextual props and styling elements for scene composition.</p>
+          </div>
+          <div class="feature-card fragment" style="border-color: rgba(34,211,238,0.2);">
+            <h4>&#x2728; Material Engine</h4>
+            <p>Matte, glossy, metallic, glass surface options. Commerce-ready output for Noon, Salla, Zid, Instagram.</p>
           </div>
         </div>
 
-        <div style="margin-top: 0.8em; padding: 12px 16px; border-radius: 12px;" class="glass-card">
-          <h4 style="margin: 0 0 4px 0; font-size: 0.82em;">&#x26a1; Platform Power-Ups (All Studios)</h4>
-          <p style="font-size: 0.72em; margin: 0;">
-            Generative video &bull; AI post-production (color grades, film grain, generative edits) &bull; "Looks" &amp; scene templating for brand consistency &bull; One-click multi-format asset packs
-          </p>
+        <div style="margin-top: 0.5em; display: flex; gap: 6px; flex-wrap: wrap;">
+          <span class="pill pill-cyan">~1 credit per image</span>
+          <span class="pill pill-blue">One-Click Asset Packs</span>
+          <span class="pill pill-emerald">E-commerce Ready</span>
         </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 7: Video Studio -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 7: VIDEO STUDIO ======== -->
       <section class="v-center">
         <div class="studio-header">
           <span class="icon">&#x1f3ac;</span>
-          <h2 style="margin: 0;"><span class="gradient-text">Video Studio</span></h2>
+          <h2 style="margin: 0;"><span style="background: linear-gradient(135deg, var(--brand-amber), var(--brand-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Video Studio</span></h2>
         </div>
-        <p style="max-width: 650px;">Turn any still image into motion-ready content for product pages and social ads.</p>
+        <p>Turn any static product photo into a <strong>10-second cinematic video</strong>.</p>
 
-        <div class="two-col" style="margin-top: 0.5em;">
+        <div class="two-col" style="margin-top: 0.3em;">
           <div>
             <div class="feature-grid" style="grid-template-columns: 1fr; gap: 8px;">
-              <div class="feature-card" style="border-color: rgba(245,158,11,0.2); padding: 10px;">
-                <h4>Image-to-Video Generation</h4>
-                <p>Upload any still and generate cinematic video clips. AI handles camera motion, lighting, and natural movement.</p>
+              <div class="feature-card" style="border-color: rgba(245,158,11,0.2); padding: 8px;">
+                <h4>&#x1f3a5; Smart Camera Orbits</h4>
+                <p>Pan, zoom, rotate with cinematic motion. AI handles camera movement and lighting.</p>
               </div>
-              <div class="feature-card fragment" style="border-color: rgba(245,158,11,0.2); padding: 10px;">
-                <h4>AI Video Director</h4>
-                <p>AI analyzes your image and writes the direction — camera angles, motion, mood — then renders cinematic video.</p>
+              <div class="feature-card fragment" style="border-color: rgba(245,158,11,0.2); padding: 8px;">
+                <h4>&#x1f3ac; AI Director</h4>
+                <p>Guides motion style and mood. Writes scene direction automatically.</p>
               </div>
-              <div class="feature-card fragment" style="border-color: rgba(245,158,11,0.2); padding: 10px;">
-                <h4>Multi-Format Export</h4>
-                <p>E-commerce (landscape), Reels/TikTok (9:16), or square — all from one source image.</p>
+              <div class="feature-card fragment" style="border-color: rgba(245,158,11,0.2); padding: 8px;">
+                <h4>&#x1f4f1; Multi-Format Export</h4>
+                <p>Landscape, Reels/TikTok (9:16), or square — all from one source image.</p>
               </div>
             </div>
           </div>
           <div>
             <h3 style="color: var(--brand-amber);">How It Works</h3>
-            <div style="margin-top: 0.2em;">
-              <div class="pain-item" style="border-color: rgba(245,158,11,0.1); padding: 5px 0;">
-                <span class="pain-icon" style="font-size: 1em;">1&#xFE0F;&#x20E3;</span>
+            <div style="margin-top: 0.15em;">
+              <div class="pain-item" style="border-color: rgba(245,158,11,0.1); padding: 4px 0;">
+                <span class="pain-icon" style="font-size: 0.9em;">1&#xFE0F;&#x20E3;</span>
                 <div class="pain-text">
                   <h4>Upload Image</h4>
                   <p>Product shot or on-model still from any studio</p>
                 </div>
               </div>
-              <div class="pain-item" style="border-color: rgba(245,158,11,0.1); padding: 5px 0;">
-                <span class="pain-icon" style="font-size: 1em;">2&#xFE0F;&#x20E3;</span>
+              <div class="pain-item" style="border-color: rgba(245,158,11,0.1); padding: 4px 0;">
+                <span class="pain-icon" style="font-size: 0.9em;">2&#xFE0F;&#x20E3;</span>
                 <div class="pain-text">
-                  <h4>AI Analyzes &amp; Directs</h4>
-                  <p>AI writes scene direction and motion plan</p>
+                  <h4>Choose Movement &amp; Mood</h4>
+                  <p>Camera motion, style, and tone</p>
                 </div>
               </div>
-              <div class="pain-item" style="border-color: rgba(245,158,11,0.1); padding: 5px 0;">
-                <span class="pain-icon" style="font-size: 1em;">3&#xFE0F;&#x20E3;</span>
+              <div class="pain-item" style="border-color: rgba(245,158,11,0.1); padding: 4px 0;">
+                <span class="pain-icon" style="font-size: 0.9em;">3&#xFE0F;&#x20E3;</span>
                 <div class="pain-text">
                   <h4>AI Generates Video</h4>
-                  <p>High-quality render with real-time SSE progress</p>
+                  <p>Real-time progress with SSE streaming</p>
                 </div>
               </div>
-              <div class="pain-item" style="border-bottom: none; padding: 5px 0;">
-                <span class="pain-icon" style="font-size: 1em;">4&#xFE0F;&#x20E3;</span>
+              <div class="pain-item" style="border-bottom: none; padding: 4px 0;">
+                <span class="pain-icon" style="font-size: 0.9em;">4&#xFE0F;&#x20E3;</span>
                 <div class="pain-text">
                   <h4>Download &amp; Deploy</h4>
-                  <p>Ready for product pages, social ads, campaigns</p>
+                  <p>Ready for ads, product pages, social</p>
                 </div>
               </div>
             </div>
+            <span class="pill pill-amber" style="margin-top: 0.3em;">~4 credits per video</span>
           </div>
         </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 8: Before vs After -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 8: MODELS + BRAND + LOCATION ======== -->
       <section class="v-center">
-        <h2>Traditional vs <span class="gradient-text">Lenci</span></h2>
+        <h2>Your Creative <span class="gradient-pink">Infrastructure</span></h2>
+
+        <div class="three-col" style="margin-top: 0.3em;">
+          <div class="feature-card" style="border-color: rgba(236,72,153,0.2); padding: 10px;">
+            <h4 style="color: var(--brand-pink);">&#x1f464; Models Studio</h4>
+            <p style="font-size: 0.58em;">AI Character Builder — create unlimited custom models with full control over gender, skin, age, ethnicity, face, hair, eyes, height, body shape.</p>
+            <ul style="margin-top: 4px;">
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">AI Character or Real Photo mode</li>
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">Persistent identity across all shots</li>
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">Reusable across all studios</li>
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">MENA-native representation</li>
+            </ul>
+            <span class="pill pill-pink" style="font-size: 0.5em; margin-top: 4px;">~1 credit/model</span>
+          </div>
+          <div class="feature-card fragment" style="border-color: rgba(16,185,129,0.2); padding: 10px;">
+            <h4 style="color: var(--brand-emerald);">&#x1f3f7;&#xFE0F; Brand Studio</h4>
+            <p style="font-size: 0.58em;">Upload brand assets once — logos, colors, design style. Every generation stays on-brand automatically.</p>
+            <ul style="margin-top: 4px;">
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">Multi-logo upload (primary, icon, mono)</li>
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">AI color extraction from logos</li>
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">Design style selection</li>
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">Multiple brand profiles</li>
+            </ul>
+          </div>
+          <div class="feature-card fragment" style="border-color: rgba(59,130,246,0.2); padding: 10px;">
+            <h4 style="color: var(--brand-blue);">&#x1f4cd; Location Studio</h4>
+            <p style="font-size: 0.58em;">Scene Composer — build complete shoot locations with posture, showcase settings, product placement.</p>
+            <ul style="margin-top: 4px;">
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">Full scene control (time, weather, angle)</li>
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">Posture &amp; showcase builder</li>
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">Pull brand &amp; model profiles</li>
+              <li style="font-size: 0.55em; padding: 1px 0 1px 1.2em;">Save &amp; reuse scene configs</li>
+            </ul>
+            <span class="pill pill-blue" style="font-size: 0.5em; margin-top: 4px;">~1 credit/image</span>
+          </div>
+        </div>
+
+        <div class="slide-footer">Confidential — LENCI 2026</div>
+      </section>
+
+      <!-- ======== SLIDE 9: TRADITIONAL vs LENCI ======== -->
+      <section class="v-center">
+        <h2>Traditional vs <span class="gradient-text">LENCI</span></h2>
 
         <table class="compare-table">
           <thead>
             <tr>
-              <th style="width: 30%;">Dimension</th>
-              <th style="width: 35%;">Traditional Photoshoot</th>
-              <th style="width: 35%;">Lenci Studio</th>
+              <th style="width: 28%;">Factor</th>
+              <th style="width: 36%;">Traditional Photoshoot</th>
+              <th style="width: 36%;">LENCI</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Cost per shoot</td>
-              <td class="dim">$5,000 — $50,000+</td>
-              <td class="highlight">From $0.50 per image</td>
+              <td class="dim">15,000 – 60,000 SAR</td>
+              <td class="highlight">50 – 200 SAR (credits)</td>
+            </tr>
+            <tr class="fragment">
+              <td>Cost per image</td>
+              <td class="dim">500 – 2,000 SAR</td>
+              <td class="highlight">~1.85 SAR (1 credit)</td>
             </tr>
             <tr class="fragment">
               <td>Turnaround</td>
-              <td class="dim">2 — 6 weeks</td>
-              <td class="highlight">Minutes</td>
+              <td class="dim">2 – 6 weeks</td>
+              <td class="highlight">Under 60 seconds</td>
             </tr>
             <tr class="fragment">
-              <td>Colorway variations</td>
-              <td class="dim">Re-shoot each one</td>
-              <td class="highlight">One-click generation</td>
+              <td>Model booking</td>
+              <td class="dim">3,000 – 10,000 SAR/day</td>
+              <td class="highlight">Unlimited AI models, instant</td>
             </tr>
             <tr class="fragment">
-              <td>Model diversity</td>
-              <td class="dim">Limited by casting budget</td>
-              <td class="highlight">Infinite AI models + your own</td>
+              <td>Scaling (200 SKUs)</td>
+              <td class="dim">3–6 months, 100,000+ SAR</td>
+              <td class="highlight">1–2 days, under 2,000 SAR</td>
             </tr>
             <tr class="fragment">
-              <td>Scalability</td>
-              <td class="dim">Linear cost growth</td>
-              <td class="highlight">Near-zero marginal cost</td>
+              <td>Iterations</td>
+              <td class="dim">Full re-shoot required</td>
+              <td class="highlight">Regenerate in seconds</td>
             </tr>
             <tr class="fragment">
-              <td>Video content</td>
-              <td class="dim">Separate production</td>
-              <td class="highlight">Generative video from stills</td>
+              <td>Modest fashion</td>
+              <td class="dim">Few specialized studios</td>
+              <td class="highlight">Native thoob &amp; abaya support</td>
             </tr>
             <tr class="fragment">
-              <td>Arabic / RTL</td>
-              <td class="dim">N/A</td>
-              <td class="highlight">Native bilingual (EN + AR)</td>
+              <td>Language</td>
+              <td class="dim">English-only tools</td>
+              <td class="highlight">Full Arabic + English</td>
             </tr>
           </tbody>
         </table>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+
+        <p class="deck-quote" style="margin-top: 0.4em;">Result: <strong>95%+ cost reduction. 99% faster. Unlimited creative control.</strong></p>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 9: Architecture -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 10: TECH ======== -->
       <section class="v-center">
         <h2>Built on <span class="gradient-text">Production-Grade</span> Tech</h2>
 
-        <div class="two-col">
+        <div class="two-col" style="margin-top: 0.2em;">
           <div>
             <h3>Architecture</h3>
-            <div class="arch-box">
-&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
-&#x2502;  React SPA  +  Express API       &#x2502;
-&#x2502;  TypeScript  &#x2022;  Vite  &#x2022;  Zustand   &#x2502;
-&#x251C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2524;
-&#x2502;  Multi-Model AI Pipeline         &#x2502;
-&#x2502;  Image &#x2022; Analysis &#x2022; Video       &#x2502;
-&#x251C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2524;
-&#x2502;  PostgreSQL  &#x2022;  GoTrue Auth       &#x2502;
-&#x2502;  Stripe Billing  &#x2022;  SSE Streams  &#x2502;
-&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;</div>
-
-            <h3 style="margin-top: 0.3em;">Key Differentiators</h3>
-            <ul>
-              <li>Multi-model AI pipeline — best model per task</li>
-              <li>Self-hosted PostgreSQL — PDPL compliant, data in KSA</li>
-              <li>Credit billing with Stripe + real-time SSE streaming</li>
-            </ul>
+            <div class="arch-box">&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+&#x2502;  FRONTEND                                 &#x2502;
+&#x2502;  React 19 &#x2022; TypeScript &#x2022; Vite 6 &#x2022; Tailwind &#x2502;
+&#x251C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2524;
+&#x2502;  MULTI-MODEL AI PIPELINE                  &#x2502;
+&#x2502;  Best model per task &#x2022; not one-size-all  &#x2502;
+&#x251C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2524;
+&#x2502;  Express / Node 20 &#x2022; PostgreSQL           &#x2502;
+&#x2502;  GoTrue Auth &#x2022; Stripe &#x2022; SSE Streaming    &#x2502;
+&#x251C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2524;
+&#x2502;  PDPL Compliant &#x2022; Data in KSA             &#x2502;
+&#x2502;  3,206 i18n Keys &#x2022; Full AR + EN           &#x2502;
+&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;</div>
           </div>
 
           <div>
             <h3>Full Stack</h3>
-            <p style="font-size: 0.62em; margin-bottom: 0.1em; color: var(--text-muted);">Frontend</p>
-            <div class="tech-row">
+            <p style="font-size: 0.58em; margin-bottom: 0.05em; color: var(--text-muted);">Frontend</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 4px; margin: 3px 0;">
               <span class="pill pill-blue">React 19</span>
               <span class="pill pill-blue">TypeScript</span>
               <span class="pill pill-blue">Vite 6</span>
               <span class="pill pill-blue">Tailwind</span>
               <span class="pill pill-blue">Zustand</span>
+              <span class="pill pill-blue">Framer Motion</span>
             </div>
-            <p style="font-size: 0.62em; margin: 0.2em 0 0.1em; color: var(--text-muted);">Backend</p>
-            <div class="tech-row">
+            <p style="font-size: 0.58em; margin: 0.15em 0 0.05em; color: var(--text-muted);">Backend</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 4px; margin: 3px 0;">
               <span class="pill pill-emerald">Express</span>
               <span class="pill pill-emerald">Node 20</span>
               <span class="pill pill-emerald">PostgreSQL</span>
-              <span class="pill pill-emerald">GoTrue</span>
+              <span class="pill pill-emerald">GoTrue Auth</span>
             </div>
-            <p style="font-size: 0.62em; margin: 0.2em 0 0.1em; color: var(--text-muted);">AI Models</p>
-            <div class="tech-row">
+            <p style="font-size: 0.58em; margin: 0.15em 0 0.05em; color: var(--text-muted);">AI Pipeline</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 4px; margin: 3px 0;">
               <span class="pill pill-violet">Multi-Model AI</span>
               <span class="pill pill-violet">Image Generation</span>
               <span class="pill pill-violet">Video Generation</span>
+              <span class="pill pill-violet">Analysis</span>
             </div>
-            <p style="font-size: 0.62em; margin: 0.2em 0 0.1em; color: var(--text-muted);">Billing &amp; i18n</p>
-            <div class="tech-row">
+            <p style="font-size: 0.58em; margin: 0.15em 0 0.05em; color: var(--text-muted);">Billing &amp; i18n</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 4px; margin: 3px 0;">
               <span class="pill pill-amber">Stripe</span>
               <span class="pill pill-amber">Resend</span>
               <span class="pill pill-pink">3,206 Keys EN+AR</span>
@@ -1047,97 +1064,104 @@
             </div>
           </div>
         </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+
+        <div class="glass" style="padding: 8px 12px; margin-top: 0.4em;">
+          <p style="font-size: 0.62em; margin: 0;"><strong>Key:</strong> Multi-model AI pipeline (best model per task) &#x2022; Self-hosted PostgreSQL, PDPL compliant &#x2022; SSE real-time streaming &#x2022; Full-stack TypeScript &#x2022; Credit billing with Stripe</p>
+        </div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 9: Business Model -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 11: BUSINESS MODEL ======== -->
       <section class="v-center">
         <h2>Business <span class="gradient-emerald">Model</span></h2>
+        <p style="font-size: 0.78em;"><strong>Simple. Scalable. Profitable.</strong></p>
 
-        <div class="tier-grid">
-          <div class="tier-card">
-            <h4>Free Trial</h4>
-            <div class="tier-price" style="color: var(--text-secondary);">$0</div>
-            <p class="small">Explore the platform</p>
-            <ul>
-              <li>Limited monthly credits</li>
-              <li>All three studios</li>
-              <li>Watermarked outputs</li>
-              <li>Community support</li>
-            </ul>
+        <div class="two-col" style="margin-top: 0.2em;">
+          <div>
+            <h3>Phase 1: Pay-As-You-Go (Current)</h3>
+            <div class="glass" style="padding: 10px; margin-top: 0.2em;">
+              <p style="font-size: 0.65em; margin: 0;"><strong style="font-size: 1.3em; color: var(--brand-emerald);">0.49 SAR</strong> per credit (~1 image per credit)</p>
+              <ul style="margin-top: 4px;">
+                <li style="font-size: 0.58em; padding: 1px 0 1px 1.2em;">No commitment, instant start</li>
+                <li style="font-size: 0.58em; padding: 1px 0 1px 1.2em;">20 free credits on signup</li>
+                <li style="font-size: 0.58em; padding: 1px 0 1px 1.2em;">Videos: ~4 credits each</li>
+              </ul>
+            </div>
+
+            <h3 style="margin-top: 0.4em;">Unit Economics</h3>
+            <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 0.2em;">
+              <div class="stat-card" style="padding: 8px;">
+                <div class="stat-number gradient-emerald" style="font-size: 1.2em;">~0.15</div>
+                <div class="stat-label" style="font-size: 0.5em;">SAR Cost/Image</div>
+              </div>
+              <div class="stat-card" style="padding: 8px;">
+                <div class="stat-number gradient-text" style="font-size: 1.2em;">80%+</div>
+                <div class="stat-label" style="font-size: 0.5em;">Gross Margin</div>
+              </div>
+            </div>
           </div>
-          <div class="tier-card featured">
-            <h4>Pro</h4>
-            <div class="tier-price gradient-text">$49<span style="font-size: 0.4em; font-weight: 400;">/mo</span></div>
-            <p class="small">For growing brands</p>
-            <ul>
-              <li>Monthly credit allocation</li>
-              <li>Unwatermarked HD exports</li>
-              <li>AI Art Director + Stylist</li>
-              <li>Asset pack generation</li>
-              <li>Priority support</li>
-            </ul>
-          </div>
-          <div class="tier-card">
-            <h4>Enterprise</h4>
-            <div class="tier-price gradient-emerald">Custom</div>
-            <p class="small">For large catalogs</p>
-            <ul>
-              <li>Volume credit packages</li>
-              <li>API access</li>
-              <li>Brand profile management</li>
-              <li>Dedicated account manager</li>
-              <li>Custom integrations</li>
-            </ul>
+
+          <div>
+            <h3>Phase 2: Subscriptions (Coming)</h3>
+            <div class="tier-grid" style="grid-template-columns: 1fr; gap: 6px; margin-top: 0.2em;">
+              <div class="tier-card" style="text-align: left; padding: 8px 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <h4 style="font-size: 0.72em;">Starter</h4>
+                  <span class="small" style="font-size: 0.55em;">300 credits/mo</span>
+                </div>
+                <p style="font-size: 0.55em; margin: 1px 0 0; color: var(--text-muted);">Small sellers, freelancers — basic studios, email support</p>
+              </div>
+              <div class="tier-card featured" style="text-align: left; padding: 8px 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <h4 style="font-size: 0.72em;">Professional</h4>
+                  <span class="small" style="font-size: 0.55em;">1,200 credits/mo</span>
+                </div>
+                <p style="font-size: 0.55em; margin: 1px 0 0; color: var(--text-muted);">Growing brands, agencies — all studios, priority gen, asset packs, brand kit</p>
+              </div>
+              <div class="tier-card" style="text-align: left; padding: 8px 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <h4 style="font-size: 0.72em;">Enterprise</h4>
+                  <span class="small" style="font-size: 0.55em;">Unlimited</span>
+                </div>
+                <p style="font-size: 0.55em; margin: 1px 0 0; color: var(--text-muted);">Large brands, retailers — dedicated support, API access, custom models, SLA</p>
+              </div>
+            </div>
+
+            <p class="deck-quote" style="margin-top: 0.4em; font-size: 0.6em;">Revenue grows with every image generated. No inventory. No physical overhead.</p>
           </div>
         </div>
-
-        <div style="margin-top: 0.8em; display: flex; gap: 16px;">
-          <div style="flex: 1; padding: 10px 14px; border-radius: 12px;" class="glass-card">
-            <h4 style="margin: 0 0 3px 0; font-size: 0.78em;">&#x1f4b3; Revenue Streams</h4>
-            <p style="font-size: 0.68em; margin: 0;">Subscriptions &bull; Credit top-up packs &bull; Enterprise contracts &bull; API access fees</p>
-          </div>
-          <div style="flex: 1; padding: 10px 14px; border-radius: 12px;" class="glass-card">
-            <h4 style="margin: 0 0 3px 0; font-size: 0.78em;">&#x1f4c8; Unit Economics</h4>
-            <p style="font-size: 0.68em; margin: 0;">Near-zero marginal cost per generation &bull; High gross margins &bull; Strong retention via brand profiles &amp; templates</p>
-          </div>
-        </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 10: Traction & Roadmap -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 12: TRACTION & ROADMAP ======== -->
       <section class="v-center">
         <h2>Traction &amp; <span class="gradient-text">Roadmap</span></h2>
 
-        <div class="two-col">
+        <div class="two-col" style="margin-top: 0.2em;">
           <div>
             <h3>Built &amp; Shipped</h3>
             <div class="timeline-item done">
               <div>
-                <h4 style="margin: 0; font-size: 0.82em;">v0.1 — Core Platform</h4>
-                <p style="font-size: 0.7em; margin: 2px 0 0;">4 AI studios, credit billing, auth, admin dashboard</p>
+                <h4 style="margin: 0; font-size: 0.75em;">v0.1 — Core Platform</h4>
+                <p style="font-size: 0.6em; margin: 1px 0 0;">6 AI studios, credit billing, auth, admin dashboard</p>
               </div>
             </div>
             <div class="timeline-item done">
               <div>
-                <h4 style="margin: 0; font-size: 0.82em;">v0.2 — Full Arabic i18n</h4>
-                <p style="font-size: 0.7em; margin: 2px 0 0;">3,206 translation keys, 100% Arabic + RTL</p>
+                <h4 style="margin: 0; font-size: 0.75em;">v0.2 — Full Arabic i18n</h4>
+                <p style="font-size: 0.6em; margin: 1px 0 0;">3,206 translation keys, 100% Arabic + RTL</p>
               </div>
             </div>
             <div class="timeline-item done">
               <div>
-                <h4 style="margin: 0; font-size: 0.82em;">Full Company Assets Ingestion</h4>
-                <p style="font-size: 0.7em; margin: 2px 0 0;">Complete brand asset pipeline, catalogs &amp; libraries</p>
+                <h4 style="margin: 0; font-size: 0.75em;">Full Company Assets Ingestion</h4>
+                <p style="font-size: 0.6em; margin: 1px 0 0;">Complete brand asset pipeline, catalogs &amp; libraries</p>
               </div>
             </div>
             <div class="timeline-item done">
               <div>
-                <h4 style="margin: 0; font-size: 0.82em;">Public Beta <span class="live-badge">LIVE</span></h4>
-                <p style="font-size: 0.7em; margin: 2px 0 0;">First marketing &amp; performance campaign, battle-testing &amp; feedback loop</p>
+                <h4 style="margin: 0; font-size: 0.75em;">Public Beta <span class="live-badge">LIVE</span></h4>
+                <p style="font-size: 0.6em; margin: 1px 0 0;">Marketing &amp; performance campaigns, battle-testing &amp; feedback loop</p>
               </div>
             </div>
           </div>
@@ -1146,114 +1170,155 @@
             <h3>Next Milestones</h3>
             <div class="timeline-item active">
               <div>
-                <h4 style="margin: 0; font-size: 0.82em;">Q2 2026 — Mobile App</h4>
-                <p style="font-size: 0.7em; margin: 2px 0 0;">Expo / React Native for iOS &amp; Android</p>
+                <h4 style="margin: 0; font-size: 0.75em;">Q2 2026 — Mobile App</h4>
+                <p style="font-size: 0.6em; margin: 1px 0 0;">Expo / React Native for iOS &amp; Android</p>
               </div>
             </div>
             <div class="timeline-item">
               <div>
-                <h4 style="margin: 0; font-size: 0.82em;">Q3 2026 — Social Media Integration</h4>
-                <p style="font-size: 0.7em; margin: 2px 0 0;">Autoposting, AI copywriting &amp; campaign scheduling</p>
+                <h4 style="margin: 0; font-size: 0.75em;">Q3 2026 — Social Media Integration</h4>
+                <p style="font-size: 0.6em; margin: 1px 0 0;">Autoposting, AI copywriting &amp; campaign scheduling</p>
               </div>
             </div>
             <div class="timeline-item">
               <div>
-                <h4 style="margin: 0; font-size: 0.82em;">Q4 2026 — API &amp; Enterprise</h4>
-                <p style="font-size: 0.7em; margin: 2px 0 0;">Public API, enterprise tier, marketplace integrations</p>
+                <h4 style="margin: 0; font-size: 0.75em;">Q4 2026 — API &amp; Enterprise</h4>
+                <p style="font-size: 0.6em; margin: 1px 0 0;">Public API, enterprise tier, Noon / Salla / Zid integrations</p>
               </div>
             </div>
             <div class="timeline-item">
               <div>
-                <h4 style="margin: 0; font-size: 0.82em;">2027 — Scale</h4>
-                <p style="font-size: 0.7em; margin: 2px 0 0;">Multi-region, advanced video, 3D product visualization</p>
+                <h4 style="margin: 0; font-size: 0.75em;">2027 — Scale</h4>
+                <p style="font-size: 0.6em; margin: 1px 0 0;">Multi-region, advanced video, 3D product visualization</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="stats-grid" style="margin-top: 0.6em;">
-          <div class="stat-card">
-            <div class="stat-number gradient-text">192</div>
-            <div class="stat-label">TSX Components</div>
+        <div class="stats-grid" style="margin-top: 0.4em;">
+          <div class="stat-card" style="padding: 8px;">
+            <div class="stat-number gradient-text" style="font-size: 1.3em;">192</div>
+            <div class="stat-label" style="font-size: 0.55em;">TSX Components</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-number gradient-emerald">3,206</div>
-            <div class="stat-label">i18n Translation Keys</div>
+          <div class="stat-card" style="padding: 8px;">
+            <div class="stat-number gradient-emerald" style="font-size: 1.3em;">3,206</div>
+            <div class="stat-label" style="font-size: 0.55em;">i18n Translation Keys</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-number gradient-pink">100%</div>
-            <div class="stat-label">Arabic Coverage</div>
+          <div class="stat-card" style="padding: 8px;">
+            <div class="stat-number gradient-pink" style="font-size: 1.3em;">100%</div>
+            <div class="stat-label" style="font-size: 0.55em;">Arabic Coverage</div>
           </div>
         </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 11: Competitive Advantage -->
-      <!-- ============================================ -->
+      <!-- ======== SLIDE 13: WHY LENCI WINS ======== -->
       <section class="v-center">
-        <h2>Why <span class="gradient-text">Lenci Wins</span></h2>
+        <h2>Why <span class="gradient-text">LENCI Wins</span></h2>
 
-        <div class="feature-grid">
+        <div class="adv-grid">
+          <div class="adv-card" style="border-color: rgba(139,92,246,0.15);">
+            <h4>&#x1f1f8;&#x1f1e6; Saudi-First, Global-Ready</h4>
+            <p>Built in KSA, for KSA — full Arabic, RTL, PDPL compliance, SAR billing. Then scale globally.</p>
+          </div>
+          <div class="adv-card" style="border-color: rgba(236,72,153,0.15);">
+            <h4>&#x1f9e3; Modest Fashion Native</h4>
+            <p>Thoob, abaya, and hijab-friendly — core to the product, not an afterthought. No competitor does this.</p>
+          </div>
+          <div class="adv-card fragment" style="border-color: rgba(34,211,238,0.15);">
+            <h4>&#x1f3af; 6 Studios, 1 Platform</h4>
+            <p>Fashion, product, video, models, brand, location — all in one place. No stitching tools together.</p>
+          </div>
+          <div class="adv-card fragment" style="border-color: rgba(16,185,129,0.15);">
+            <h4>&#x1f9e0; Multi-Model AI</h4>
+            <p>Not locked to one vendor. Best model for each task = best output quality.</p>
+          </div>
+          <div class="adv-card fragment" style="border-color: rgba(245,158,11,0.15);">
+            <h4>&#x1f4b0; 95%+ Cost Reduction</h4>
+            <p>From 15,000+ SAR per shoot to under 200 SAR. The math is undeniable.</p>
+          </div>
+          <div class="adv-card fragment" style="border-color: rgba(59,130,246,0.15);">
+            <h4>&#x26a1; 60 Seconds vs 6 Weeks</h4>
+            <p>Speed that matches the pace of e-commerce and social media.</p>
+          </div>
+          <div class="adv-card fragment" style="border-color: rgba(249,115,22,0.15);">
+            <h4>&#x1f512; Data Sovereignty</h4>
+            <p>Self-hosted in KSA. PDPL compliant. Enterprise-grade security.</p>
+          </div>
+          <div class="adv-card fragment" style="border-color: rgba(139,92,246,0.15);">
+            <h4>&#x1f680; Production-Ready</h4>
+            <p>Not a demo. Live product with enterprise-grade architecture. Public beta now.</p>
+          </div>
+        </div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
+      </section>
+
+      <!-- ======== SLIDE 14: WHY NOW ======== -->
+      <section class="v-center">
+        <h2>Why <span class="gradient-emerald">Now?</span></h2>
+
+        <div class="feature-grid" style="margin-top: 0.4em;">
           <div class="feature-card" style="border-color: rgba(139,92,246,0.2);">
-            <span class="feature-icon">&#x1f30d;</span>
-            <h4>MENA-Native</h4>
-            <p>Not a Western tool with a translation layer. Built from day one for Arabic speakers with proper RTL, cultural context, and PDPL-compliant data residency in Saudi Arabia.</p>
+            <h4>&#x1f9ea; AI Is Ready</h4>
+            <p>Generation quality crossed the commercial threshold in 2024–2025. What was impossible 2 years ago is now production-grade.</p>
           </div>
-          <div class="feature-card" style="border-color: rgba(6,182,212,0.2);">
-            <span class="feature-icon">&#x1f9e0;</span>
-            <h4>Multi-Model AI</h4>
-            <p>Not locked to a single AI vendor. Orchestrates the best model for each task — try-on, analysis, image generation, and video — so you always get top-tier results.</p>
+          <div class="feature-card" style="border-color: rgba(16,185,129,0.2);">
+            <h4>&#x1f1f8;&#x1f1e6; Saudi E-commerce Exploding</h4>
+            <p>Vision 2030 is accelerating digital commerce. 211B SAR market projected to 350B+ by 2030.</p>
           </div>
-          <div class="feature-card fragment" style="border-color: rgba(16,185,129,0.2);">
-            <span class="feature-icon">&#x1f3af;</span>
-            <h4>Full Pipeline</h4>
-            <p>Competitors do one thing. Lenci covers the entire workflow: garment detection, virtual try-on, product staging, mockup design, video, and post-production — all in one platform.</p>
+          <div class="feature-card fragment" style="border-color: rgba(245,158,11,0.2);">
+            <h4>&#x1f3ea; 1.2M+ Saudi SMEs</h4>
+            <p>Majority need affordable digital content. Traditional photography doesn't scale for them.</p>
           </div>
           <div class="feature-card fragment" style="border-color: rgba(236,72,153,0.2);">
-            <span class="feature-icon">&#x1f512;</span>
-            <h4>Data Sovereignty</h4>
-            <p>Self-hosted PostgreSQL with data residency in KSA. No third-party data exposure. Enterprise-grade auth with GoTrue, API key management, and role-based access.</p>
+            <h4>&#x1f9e3; 1.1 Trillion SAR Modest Fashion</h4>
+            <p>Global modest fashion market by 2027 — with zero AI-native tools serving it.</p>
           </div>
         </div>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+
+        <div class="glass" style="padding: 12px 16px; margin-top: 0.6em; border-color: rgba(139,92,246,0.25);">
+          <p style="font-size: 0.78em; margin: 0; text-align: center; color: var(--text-primary);">
+            <strong>First-mover advantage</strong> — No competitor combines all 6 studios with Arabic-first, Saudi-native positioning.
+          </p>
+        </div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
-      <!-- ============================================ -->
-      <!-- SLIDE 12: The Ask / CTA -->
-      <!-- ============================================ -->
-      <section class="v-center">
+      <!-- ======== SLIDE 15: CLOSING ======== -->
+      <section class="v-center" style="justify-content: center !important; padding-top: 0 !important;">
         <div class="cta-box">
-          <div class="logo-mark" style="justify-content: center; margin-bottom: 0.8em;">
+          <div class="logo-mark" style="justify-content: center; margin-bottom: 0.6em;">
             <div class="mark">L</div>
-            <span class="name">Lenci Studio</span>
+            <span class="name">LENCI</span>
           </div>
-          <h3 style="font-size: 1.6em;">The End of the <span class="gradient-text">Photoshoot</span></h3>
-          <p style="font-size: 0.88em; max-width: 600px; margin: 0.4em auto;">
-            AI-powered virtual content studio for fashion &amp; e-commerce.<br>
-            MENA-first. Production-ready. Infinitely scalable.
+          <h3 style="font-size: 1.5em; color: var(--text-primary); margin-bottom: 0.15em; position: relative;">The End of the <span class="gradient-hero">Photoshoot.</span></h3>
+          <p style="font-size: 0.82em; max-width: 580px; margin: 0.3em auto; position: relative;">
+            The future of visual content is AI-generated.<br>The future is LENCI.
           </p>
 
-          <div class="stats-grid" style="max-width: 500px; margin: 1em auto 0;">
-            <div class="stat-card" style="background: rgba(139,92,246,0.08);">
-              <div class="stat-number" style="font-size: 1.5em;">&#x1f4e7;</div>
-              <div class="stat-label" style="font-size: 0.65em;">Get In Touch</div>
-            </div>
-            <div class="stat-card" style="background: rgba(6,182,212,0.08);">
-              <div class="stat-number" style="font-size: 1.5em;">&#x1f680;</div>
-              <div class="stat-label" style="font-size: 0.65em;">Request Demo</div>
-            </div>
-            <div class="stat-card" style="background: rgba(16,185,129,0.08);">
-              <div class="stat-number" style="font-size: 1.5em;">&#x1f91d;</div>
-              <div class="stat-label" style="font-size: 0.65em;">Partner With Us</div>
+          <div style="margin-top: 1em; position: relative;">
+            <p style="font-size: 0.72em; color: var(--text-muted); margin-bottom: 0.4em;">We're looking for:</p>
+            <div class="stats-grid" style="max-width: 600px; margin: 0 auto;">
+              <div class="stat-card" style="background: rgba(139,92,246,0.08);">
+                <div class="stat-number" style="font-size: 1.3em;">&#x1f4bc;</div>
+                <div class="stat-label" style="font-size: 0.58em;">Strategic Investors</div>
+              </div>
+              <div class="stat-card" style="background: rgba(34,211,238,0.08);">
+                <div class="stat-number" style="font-size: 1.3em;">&#x1f91d;</div>
+                <div class="stat-label" style="font-size: 0.58em;">Industry Partners</div>
+              </div>
+              <div class="stat-card" style="background: rgba(16,185,129,0.08);">
+                <div class="stat-number" style="font-size: 1.3em;">&#x1f680;</div>
+                <div class="stat-label" style="font-size: 0.58em;">Enterprise Customers</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <p style="text-align: center; margin-top: 1.2em; font-size: 0.85em; color: var(--text-muted);">
-          dev-lenci.siyadatech.studio &nbsp;&bull;&nbsp; Confidential 2026
+        <p style="text-align: center; margin-top: 0.8em; font-size: 0.72em; color: var(--text-muted); position: relative;">
+          <em>Built in Saudi Arabia. For the World.</em>
         </p>
-        <div class="slide-footer">Confidential — Lenci Studio 2026</div>
+        <div class="slide-footer">Confidential — LENCI 2026</div>
       </section>
 
     </div><!-- .slides -->
